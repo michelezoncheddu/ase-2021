@@ -1,1 +1,1 @@
-# ase-2021
+# Advanced Software Engineering course assignments
