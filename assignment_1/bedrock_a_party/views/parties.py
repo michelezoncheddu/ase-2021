@@ -15,11 +15,14 @@ def all_parties():
     result = None
     if request.method == 'POST':
         try:
+            pass
             # TODO: create a party
         except CannotPartyAloneError:
+            pass
             # TODO: return 400
 
     elif request.method == 'GET':
+        pass
         # TODO: get all the parties
 
     return result
@@ -28,6 +31,7 @@ def all_parties():
 # TODO: complete the decoration
 @parties.route("/parties/loaded")
 def loaded_parties():
+    pass
     # TODO: returns the number of parties currently loaded in the system
 
 
@@ -40,9 +44,11 @@ def single_party(id):
     # TODO: check if the party is an existing one
 
     if 'GET' == request.method:
+        pass
         # TODO: retrieve a party
 
     elif 'DELETE' == request.method:
+        pass
         # TODO: delete a party
 
     return result
@@ -57,6 +63,7 @@ def get_foodlist(id):
     # TODO: check if the party is an existing one
 
     if 'GET' == request.method:
+        pass
         # TODO: retrieve food-list of the party
 
     return result
@@ -72,9 +79,11 @@ def edit_foodlist(id, user, item):
     result = ""
 
     if 'POST' == request.method:
+        pass
         # TODO: add item to food-list handling NotInvitedGuestError (401) and ItemAlreadyInsertedByUser (400)
 
     if 'DELETE' == request.method:
+        pass
         # TODO: delete item to food-list handling NotExistingFoodError (400)
 
     return result
@@ -93,7 +102,7 @@ def create_party(req):
     try:
         guests = json_data['guests']
     except:
-        raise CannotPartyAloneError()
+        raise CannotPartyAloneError("you cannot party alone!")
 
     # add party to the loaded parties lists
     _LOADED_PARTIES[str(_PARTY_NUMBER)] = Party(_PARTY_NUMBER, guests)

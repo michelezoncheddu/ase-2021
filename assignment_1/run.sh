@@ -11,4 +11,3 @@ export FLASK_APP=bedrock_a_party
 
 # execute the flask run command
 flask run
-

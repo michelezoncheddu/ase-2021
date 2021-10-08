@@ -28,7 +28,7 @@ class FoodList():
     def add(self, food, user):
         to_add = Food(food, user)
         if to_add in self.foodlist:
-            raise ItemAlreadyInsertedByUser(user + " already committed to bring " + user)
+            raise ItemAlreadyInsertedByUser(user + " already committed to bring " + food)
         self.foodlist.append(to_add)
         return to_add
 
