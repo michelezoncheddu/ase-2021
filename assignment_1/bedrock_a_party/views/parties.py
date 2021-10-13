@@ -1,8 +1,8 @@
 from flakon import JsonBlueprint
 from flask import abort, jsonify, request
 
-from bedrock_a_party.classes.party import CannotPartyAloneError, NotExistingFoodError, \
-     NotInvitedGuestError, Party
+from bedrock_a_party.classes.party import CannotPartyAloneError, ItemAlreadyInsertedByUser, \
+     NotExistingFoodError, NotInvitedGuestError, Party
 
 parties = JsonBlueprint('parties', __name__)
 
@@ -107,7 +107,7 @@ def edit_foodlist(id, user, item):
             result = jsonify({'error': f'{user} is not invited to this party'})
             return result, 401
         except ItemAlreadyInsertedByUser:
-            result = jsonify({'error': f'{user} already committed to bring {food}'})
+            result = jsonify({'error': f'{user} already committed to bring {item}'})
             return result, 400
         
         serialized_food = food.serialize()
@@ -117,7 +117,7 @@ def edit_foodlist(id, user, item):
         try:
             party.remove_from_food_list(item, user)
         except NotExistingFoodError:
-            result = jsonify({'error': f'{user} has not added {food} to this party foodlist'})
+            result = jsonify({'error': f'{user} has not added {item} to this party foodlist'})
             return result, 400
         
         result = jsonify({'msg': 'Food deleted!'})
